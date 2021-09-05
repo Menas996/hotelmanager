@@ -8,7 +8,7 @@ export default {
     mutations: {
         //该方法，用于对admin对象赋值
         setAdmin(state, val) {
-            state.admin = val
+            return state.admin = val
         }
     }
 }

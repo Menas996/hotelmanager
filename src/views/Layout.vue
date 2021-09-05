@@ -63,7 +63,7 @@
             <span>权限管理</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="4-1">权限管理</el-menu-item>
+            <el-menu-item index="/layout/permission">权限管理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
@@ -143,15 +143,19 @@ export default {
       isCollapse: false,
     };
   },
-  created() {
+  async created() {
     let loginId = localStorage.getItem("loginId");
+    // let roleId = sessionStorage.setItem("roleId",);
+
     if (!loginId) {
       //如果用户名为空，就跳回登陆页面
       this.$router.push("/login");
     }
     //根据用户名，获取用户信息
-    this.$get("/Admin/GetOne", { loginId }).then((res) => {
+    await this.$get("/Admin/GetOne", { loginId }).then((res) => {
       this.setAdmin(res);
+      sessionStorage.setItem("roleId", this.$store.state.admin.admin.roleId);
+      console.log(this.$store.state.admin.admin.roleId);
     });
   },
   computed: {

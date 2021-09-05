@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import NProgress from 'nprogress'
+import admin from '../store/module/admin'
 
 Vue.use(VueRouter)
 
@@ -122,21 +123,22 @@ const router = new VueRouter({
 //路由前置守卫
 router.beforeEach((to, from, next) => {
         //显示加载进度条
+
+
         NProgress.start()
         if (to.meta && to.meta.title) {
             document.title = to.meta.title
         }
         if (to.meta && to.meta.permission) {
-            if (to.meta.permission.includes(parseInt(localStorage.getItem('roleId')))) {
-                //调用next方法，表示继续往下走
+            if (to.meta.permission.includes(parseInt(sessionStorage.getItem('roleId')))) {
                 next()
             } else {
-                router.push("/layout")
+                router.push('/layout')
             }
         } else {
-            //调用next方法，表示路由继续往下走
             next()
         }
+
 
     })
     //路由后置守卫

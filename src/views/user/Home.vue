@@ -10,7 +10,9 @@ export default {
       totalTypePrice: [],
     };
   },
-  created() {},
+  created() {
+    localStorage.setItem("roleId", this.$store.state.admin.admin.roleId);
+  },
   async mounted() {
     //获取每种房型的销售额
     let res = await this.$get("/RoomType/TotalTypePrice");

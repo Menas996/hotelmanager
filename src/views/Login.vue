@@ -110,6 +110,10 @@ export default {
           if (success) {
             sessionStorage.setItem("token", token);
             //在浏览器中保存登录名
+            sessionStorage.setItem(
+              "roleId",
+              this.$store.state.admin.admin.roleId
+            );
 
             localStorage.setItem("loginId", this.ruleForm.loginId);
             //判断是否需要记住密码
