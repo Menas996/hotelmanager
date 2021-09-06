@@ -274,7 +274,9 @@ export default {
     addClick() {
       this.isAdd = true;
       this.drawer = true;
-      this.resetForm("ruleForm");
+      if (this.roomTypeId) {
+        this.resetForm("ruleForm");
+      }
     },
     drawerClose(done) {
       this.drawer = false;

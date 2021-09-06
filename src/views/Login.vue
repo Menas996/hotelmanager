@@ -17,7 +17,7 @@
           class="demo-ruleForm mainForm"
         >
           <h2>酒店用户管理系统</h2>
-          <el-form-item label="账号" prop="loginId">
+          <el-form-item style="color: #fff" label="账号" prop="loginId">
             <el-input
               type="text"
               v-model="ruleForm.loginId"
