@@ -386,13 +386,10 @@ export default {
     //关闭抽屉的方法
     addClick() {
       this.isAdd = true;
-      this.ruleForm.loginId = "";
-      this.ruleForm.loginPwd = "";
-      this.ruleForm.loginPwd2 = "";
-      this.ruleForm.name = "";
-      this.ruleForm.phone = "";
-      this.ruleForm.roleId = "";
-      this.ruleForm.photo = "";
+      if (this.ruleForm.loginId) {
+        this.resetForm("ruleForm");
+      }
+
       this.drawer = true;
     },
     drawerClose(done) {

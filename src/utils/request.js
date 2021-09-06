@@ -32,18 +32,18 @@ let setToken = function() {
 
 //添加请求拦截器
 instance.interceptors.request.use(
-    function(config) {
-        //再发送请求之前做什么
-        NProgress.start()
-        return config;
-    },
-    function(err) {
-        NProgress.done()
-        return Promise.reject(err)
-    }
-)
-
-//添加响应拦截器
+        function(config) {
+            //再发送请求之前做什么
+            NProgress.start()
+            console.log(config);
+            return config;
+        },
+        function(err) {
+            NProgress.done()
+            return Promise.reject(err)
+        }
+    )
+    //添加响应拦截器
 instance.interceptors.response.use(
         function(response) {
             //对响应数据做点什么

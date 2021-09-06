@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像模糊处理</title>
+    <style>
+        img {
+            /* blur是一个函数小括号里面数值越大，图片越模糊注意数值要加px  */
+            filter: blur(5px)
+        }
+        
+        img:hover {
+            filter: blur(0);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/tb.jpg" alt="">
+</body>
+
+</html>

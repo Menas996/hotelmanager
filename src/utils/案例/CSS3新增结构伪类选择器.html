@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3新增结构伪类选择器</title>
+    <style>
+        /* 1.选择ul里面的第一个孩子 小li */
+        
+        ul li:first-child {
+            background-color: pink;
+        }
+        /* 2.选择ul里面的最后一个孩子小li */
+        
+        ul li:last-child {
+            background-color: red;
+        }
+        /* 3.选择ul里面的第三个孩子 小li */
+        /* ul li:nth-child(3) {
+            background-color: skyblue;
+        } */
+        /* 4.将所有偶数的孩子li都选出来 */
+        
+        ul li:nth-child(even) {
+            background-color: gray;
+        }
+        /* 5.将所有奇数的孩子li都选出来 */
+        
+        ul li:nth-child(odd) {
+            background-color: #868686;
+        }
+        /* 6.相当于选择了所有的孩子li */
+        
+        ol li:nth-child(2n) {
+            background-color: pink;
+        }
+        
+        ol li:nth-child(2n+1) {
+            background-color: plum;
+        }
+        /* 区别 */
+        
+        section div:nth-child(1) {
+            background-color: red;
+        }
+        /* 可以对div类型的第n个孩子进行选择 */
+        
+        section div:nth-of-type(1) {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ul>
+    <ol>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ol>
+    <!-- 区别 -->
+    <section>
+        <p>光头强</p>
+        <div>熊大</div>
+        <div>熊二</div>
+    </section>
+</body>
+
+</html>

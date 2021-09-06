@@ -143,7 +143,7 @@ export default {
       isCollapse: false,
     };
   },
-  async created() {
+  created() {
     let loginId = localStorage.getItem("loginId");
     // let roleId = sessionStorage.setItem("roleId",);
 
@@ -152,7 +152,7 @@ export default {
       this.$router.push("/login");
     }
     //根据用户名，获取用户信息
-    await this.$get("/Admin/GetOne", { loginId }).then((res) => {
+    this.$get("/Admin/GetOne", { loginId }).then((res) => {
       this.setAdmin(res);
       sessionStorage.setItem("roleId", this.$store.state.admin.admin.roleId);
       console.log(this.$store.state.admin.admin.roleId);

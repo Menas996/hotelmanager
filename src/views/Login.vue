@@ -17,28 +17,34 @@
           class="demo-ruleForm mainForm"
         >
           <h2>酒店用户管理系统</h2>
-          <el-form-item style="color: #fff" label="账号" prop="loginId">
+          <el-form-item label="账号" prop="loginId" class="loginid">
             <el-input
               type="text"
               v-model="ruleForm.loginId"
+              placeholder="请输入您的账号..."
               autocomplete="off"
               ref="inputId"
+              clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="loginPwd">
+          <el-form-item label="密码" prop="loginPwd" class="loginpwd">
             <el-input
               type="password"
               v-model="ruleForm.loginPwd"
+              placeholder="请输入您的密码..."
               autocomplete="off"
               class="inputPwd"
               ref="inputPwd"
+              clearable
             ></el-input>
           </el-form-item>
           <el-form-item label="" prop="loginPwd" class="remeberPwd">
-            <el-checkbox v-model="ruleForm.checkMe">记住我</el-checkbox>
+            <el-checkbox v-model="ruleForm.checkMe" class="remeclick"
+              >记住我</el-checkbox
+            >
           </el-form-item>
           <el-form-item class="btn" label-width="0px">
-            <el-button type="primary" @click="submitForm('ruleForm')"
+            <el-button type="success" @click="submitForm('ruleForm')"
               >提交</el-button
             >
             <el-button @click="resetForm('ruleForm')"
@@ -57,7 +63,10 @@ import { strToMd5 } from "../utils/md5";
 import { startAnime } from "../assets/js/login.js";
 export default {
   mounted() {
-    startAnime();
+    if (this.anime) {
+      startAnime();
+      this.anime = false;
+    }
   },
   data() {
     //验证账号名称
@@ -78,6 +87,7 @@ export default {
     };
 
     return {
+      anime: true,
       ruleForm: {
         //表单数据
         loginId: "",
@@ -142,15 +152,35 @@ export default {
   },
 };
 </script>
-
-<style scoped lang='less'>
+// 单一样式
+<style lang="less">
+.loginid,
+.loginpwd {
+  .el-form-item__label {
+    color: #fff;
+  }
+}
+.remeclick {
+  .el-checkbox__label {
+    color: #fff;
+  }
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: lightgreen;
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: lightgreen;
+  }
+}
+</style>
+<style lang='less' scoped>
 /* 背景样式 */
 #particle-canvas {
   width: 100%;
   height: 100vh;
   background: linear-gradient(
     to bottom,
-    rgb(3, 164, 153) 0%,
+    rgb(5, 145, 135) 0%,
     rgb(2, 115, 213) 100%
   );
   vertical-align: middle;
@@ -173,7 +203,9 @@ export default {
     width: 400px;
     height: 200px;
     padding: 30px;
-    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     .mainForm {
       width: 450px;
@@ -184,8 +216,8 @@ export default {
       text-align: center;
       h2 {
         position: absolute;
-        left: 40%;
-        top: -50px;
+        left: 38%;
+        top: -47px;
         color: #fff;
         margin: 0;
         width: 40%;
